@@ -2,9 +2,9 @@
 import Head from 'next/head'
 import { Router } from 'next/router'
 
-
-
-
+// ** Store Imports
+import { store } from 'src/store'
+import { Provider } from 'react-redux'
 
 // ** Loader Import
 import NProgress from 'nprogress'
@@ -96,13 +96,13 @@ const App = props => {
   const aclAbilities = Component.acl ?? defaultACLObj
 
   return (
-    
+    <Provider store={store}>
       <CacheProvider value={emotionCache}>
         <Head>
           <title>{`${themeConfig.templateName} `}</title>
           <meta
             name='description'
-            content={`${themeConfig.templateName}`}
+            content={`${themeConfig.templateName} – Material Design React Admin Dashboard Template – is the most developer friendly & highly customizable Admin Dashboard Template based on MUI v5.`}
           />
           <meta name='keywords' content='Material Design, MUI, Admin Template, React Admin Template' />
           <meta name='viewport' content='initial-scale=1, width=device-width' />
@@ -129,7 +129,7 @@ const App = props => {
           </SettingsProvider>
         </AuthProvider>
       </CacheProvider>
-   
+    </Provider>
   )
 }
 
